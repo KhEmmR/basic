@@ -1,0 +1,28 @@
+// *************************************
+//
+//  jQuery TRICS SECTION
+//  -> elements use with jQuery
+//
+// *************************************
+
+.block__tags-cloudp {
+
+}
+
+.tags {
+  width: 400px;
+  margin: 0 auto;
+  height: 300px;
+  text-align: center;
+
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50% -150px;
+}
+
+.tags__link {
+	text-decoration: none;
+	color: #fff;
+	margin: 0 15px 10px 0;
+	display: inline-block;
+}

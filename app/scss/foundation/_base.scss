@@ -1,0 +1,41 @@
+// *************************************
+//
+//  Базовые стили
+//  -> cтили, применяемые ко всей странице
+//
+// *************************************
+
+html,body {
+  font-size: 1em;
+	font-family: 'PT Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.wrapper {
+	width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.section {
+	height: 800px;
+	padding: 20px;
+}
+
+.section__two {
+	background: $twoSectionBg;
+}
+
+.section__three {
+	background: $thirdSectionBg;
+}
+
+.section__four {
+	background: $fourSectionBg;
+}
+
+.section-title {
+	margin: 0;
+}

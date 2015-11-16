@@ -1,0 +1,19 @@
+//- mixin nav(className, items)
+//- 	nav(class=className)
+//- 			ul(class=className+"__list")
+//- 				each item, index in items
+//- 					li(class=className+"__item")
+//- 						a(class=className+"__link"+ ((index == 0) ? ' active' : "") href="##{item}"))= item						
+			
+mixin tabs(items, type, className, id, name)
+	each item, index in items
+		if (index == 0)
+			input(type=type class=className id=id+"-#{index}" name=name checked)
+			label(class=name+"__label" for=id+"-#{index}")=item
+		else
+			input(type=type class=className id=id+"-#{index}" name=name)
+			label(class=name+"__label" for=id+"-#{index}")=item
+
+mixin tags_link(items, className)
+	each item, index in items
+		a(href="#" class=className)=item

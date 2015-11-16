@@ -1,0 +1,214 @@
+// *************************************
+//
+//  CSS TRICS SECTION
+//  -> include tricks on pure CSS
+//
+// *************************************
+
+/************ Таб вкладки ***********/
+
+.tabbed {
+	width: 960px;
+	margin: -4px auto;
+}
+
+.radio-input {
+	display: none;
+}
+
+.tabs__label {
+	display: block;
+	float: left;
+	padding: 12px 20px;
+	margin-right: 5px;
+	cursor: pointer;
+	-webkit-transition: background-color .3s;
+}
+
+.tabs__label:hover, .radio-input:checked + .tabs__label {
+	background-color: $navHover;
+	color: #fff;
+}
+
+.tabs {
+	position: absolute;
+	top: 134px;
+	left: 14%;
+	opacity: 0;
+	z-index: 0;
+
+	-webkit-transform: rotateX(-20deg);
+	transform: rotateX(-20deg);
+	-webkit-transform-origin: top center;
+	-webkit-transition: opacity .3s, transform 1s;
+
+	width: 960px;
+	border: 2px solid $navHover;
+	padding: 10px 30px 40px;
+	line-height: 1.4em;
+}
+
+.tabs__title {
+	color: $titleColor;
+	font-size: 1.5em;
+	margin-bottom: 50px;
+}
+
+#tab-nav-0:checked ~ .tabs__container > .tabs__0,
+#tab-nav-1:checked ~ .tabs__container > .tabs__1,
+#tab-nav-2:checked ~ .tabs__container > .tabs__2,
+#tab-nav-3:checked ~ .tabs__container > .tabs__3 {
+	-webkit-transform: rotateX(0deg);
+	opacity: 1;
+	z-index: 1;
+}
+
+/************ Анимации ***********/
+
+.square {
+	width: 60px;
+	height: 60px;
+	margin: 30px;
+	background: #ccc;
+
+	-webkit-animation: anim 2s linear 2s 3 reverse;
+
+  &:hover {
+  	-webkit-animation-play-state: paused; /* останавливает анимацию, но в короткую запись данное свойство не входит*/
+  }
+}
+
+@-webkit-keyframes anim{
+	from{
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes anim{
+	from{
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+/*********** Терхмерный куб ***********/
+
+.cube-wrapper{
+	margin: 80px;
+
+	-webkit-perspective: 900px;
+}
+
+.cube{
+	width: 300px;
+	height: 300px;
+	position: relative;
+
+	-webkit-transform-origin: 50% 50% -150px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	// -webkit-transform: rotate3d(1,1,1,50deg);
+}
+
+.side{
+	width: 300px;
+	height: 300px;
+	background: -webkit-radial-gradient(rgba(80,180,255,.1), rgba(80,180,255,.5));
+	position: absolute;
+	-webkit-box-sizing: border-box;
+	border: 10px solid #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 6px rgba(0,0,0,.5);
+	color: #fff;
+	font-size: 4em;
+	text-align: center;
+	line-height: 300px;
+	text-shadow: 0 1px 3px rgba(0,0,0,.4);
+
+
+	-webkit-transform-origin: 50% 50% -150px;
+}
+#side-1{
+	-webkit-transform: rotateY(90deg);
+}
+#side-2{
+	-webkit-transform: rotateY(-90deg);
+}
+#side-3{
+	-webkit-transform: rotateX(90deg);
+}
+#side-4{
+	-webkit-transform: rotateX(-90deg);
+}
+#side-5{
+	-webkit-transform: rotateY(180deg);
+}
+
+/*********** Эффектные инпуты ***********/
+
+.field-wrap {
+  position: relative;
+  width: 200px;
+  height: 40px;
+}
+
+.field {
+	// background: transparent;
+	padding: 5px 15px;
+	// border: none;
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	box-sizing: border-box;
+	color: #6A7989;
+	font-size: 20px;
+	//opacity: 0;
+
+  &:focus + .field-label.label-text {
+    //left: 0;
+    //top: -2%;
+    transform: translate3d(0, -90%, 0);
+		-webkit-transition: transform 0.3s ease;
+		transition: transform 0.3s ease;
+	}
+}
+
+.field-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  font-size: 18px;
+
+  &:before {
+    border-top: 2px solid #6A7989;
+  }
+
+  &:after {
+    border-bottom: 2px solid #6A7989;
+  }
+}
+
+.label-text {
+  position: absolute;
+  left: 22%;
+  top: 22%;
+  display: block;
+  color: #6A7989;
+}

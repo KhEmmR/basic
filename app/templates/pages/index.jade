@@ -1,0 +1,60 @@
+extends ../layouts/main_layout.jade
+
+block title
+	title Basis Elemens
+
+block content
+	section.section.section__one(data-section="css")
+		h2.section__title
+			| CSS
+		.tabbed
+			+tabs(["Эффекты", "Анимации", "Слайдер, Аккордион", "Трехмерный куб"],"radio", "radio-input", "tab-nav", "tabs")
+			.tabs__container.clearfix
+				.tabs.tabs__0
+					h2.tabs__title 
+						| Эффекты
+					.field-wrap
+						input.field#field
+						label(for="field").field-label
+							span.label-text
+								| Type your text
+				.tabs.tabs__1
+					h2.tabs__title
+						| Анимация
+					.square
+				.tabs.tabs__2
+					h2.tabs__title
+						| Слайдер, Аккордион
+				.tabs.tabs__3
+					h2.tabs__title
+						| Трехмерный куб
+					.cube-wrapper
+						.cube#cube
+							.side#side-1
+								| FRONT
+							.side#side-2
+								| BACK
+							.side#side-3
+								| LEFT
+							.side#side-4
+								| RIGHT
+							.side#side-5
+								| TOP
+							.side#side-6
+								| BOTTOM
+	section.section.section__two(data-section="jquery")
+		h2.section__title
+			| jQuery
+		
+		.block__tags-cloud
+			h3.block__title
+				| Облако тегов
+			.tags
+				+tags_link(["CSS", "HTML", "JS", "jQuery", "AngularJS", "SVG", "CoffeScript", "PHP", "Ember"],"tags__link")
+	section.section.section__three(data-section="coffeescript")
+		h2.section__title
+			| CoffeScript
+	section.section.section__four(data-section="packs")
+		h2.section__title
+			| Packs
+	

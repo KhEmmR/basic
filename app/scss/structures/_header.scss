@@ -1,0 +1,35 @@
+// -------------------------------------
+//   HEADER
+// -------------------------------------
+
+.nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+  z-index: 5;
+	width: 100%;
+	margin: 0 0 20px;
+	background: rgba(0,0,0,.5);
+}
+.nav__list {
+	list-style: none;
+	margin: 0;
+	padding: 0 50px 0;
+}
+.nav__item {
+	float: left;
+	margin: 0 20px 0 0;
+}
+.nav__link {
+	display: block;
+	margin: 0;
+	padding: 15px 30px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 1.2em;
+
+  &:hover, .active {
+  	background: #4EC6DE;
+  }
+}

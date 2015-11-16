@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Basis Elemens</title>
+    <meta name="description" content="Basis front-end elements">
+    <meta name="keywords" content="frontend trics">
+    <meta name="author" content="Emma Khayrullina">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!-- build:css css/vendor.min.css -->
+    <link rel="stylesheet" href="/bower/normalize-css/normalize.css">
+    <!-- endbuild -->
+    <!-- build:css fonts/fonts.min.css -->
+    <!-- endbuild -->
+    <!-- build:css css/main.min.css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
+    <!-- build:js js/modernizr.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <!-- endbuild -->
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+<p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите</a> его.</p>
+<![endif]-->
+    <header class="page-header">
+      <nav class="nav">
+        <ul class="nav__list clearfix">
+          <li class="nav__item"><a href="#css" class="nav__link">CSS</a></li>
+          <li class="nav__item"><a href="#jquery" class="nav__link">jQuery</a></li>
+          <li class="nav__item"><a href="#coffeescript" class="nav__link">CoffeScript</a></li>
+          <li class="nav__item"><a href="#packs" class="nav__link">Packs</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <section data-section="css" class="section section__one">
+        <h2 class="section__title">CSS</h2>
+        <div class="tabbed">
+          <input type="radio" id="tab-nav-0" name="tabs" checked="checked" class="radio-input" />
+          <label for="tab-nav-0" class="tabs__label">Эффекты</label>
+          <input type="radio" id="tab-nav-1" name="tabs" class="radio-input" />
+          <label for="tab-nav-1" class="tabs__label">Анимации</label>
+          <input type="radio" id="tab-nav-2" name="tabs" class="radio-input" />
+          <label for="tab-nav-2" class="tabs__label">Слайдер, Аккордион</label>
+          <input type="radio" id="tab-nav-3" name="tabs" class="radio-input" />
+          <label for="tab-nav-3" class="tabs__label">Трехмерный куб</label>
+          <div class="tabs__container clearfix">
+            <div class="tabs tabs__0">
+              <h2 class="tabs__title"> 
+Эффекты</h2>
+              <div class="field-wrap">
+                <input id="field" class="field">
+                <label for="field" class="field-label"><span class="label-text">Type your text</span></label>
+              </div>
+            </div>
+            <div class="tabs tabs__1">
+              <h2 class="tabs__title">Анимация</h2>
+              <div class="square"></div>
+            </div>
+            <div class="tabs tabs__2">
+              <h2 class="tabs__title">Слайдер, Аккордион</h2></div>
+            <div class="tabs tabs__3">
+              <h2 class="tabs__title">Трехмерный куб</h2>
+              <div class="cube-wrapper">
+                <div id="cube" class="cube">
+                  <div id="side-1" class="side">FRONT</div>
+                  <div id="side-2" class="side">BACK</div>
+                  <div id="side-3" class="side">LEFT</div>
+                  <div id="side-4" class="side">RIGHT</div>
+                  <div id="side-5" class="side">TOP</div>
+                  <div id="side-6" class="side">BOTTOM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section data-section="jquery" class="section section__two">
+        <h2 class="section__title">jQuery</h2>
+        <div class="block__tags-cloud">
+          <h3 class="block__title">Облако тегов</h3>
+          <div class="tags"><a href="#" class="tags__link">CSS</a><a href="#" class="tags__link">HTML</a><a href="#" class="tags__link">JS</a><a href="#" class="tags__link">jQuery</a><a href="#" class="tags__link">AngularJS</a><a href="#" class="tags__link">SVG</a><a href="#"
+            class="tags__link">CoffeScript</a><a href="#" class="tags__link">PHP</a><a href="#" class="tags__link">Ember</a></div>
+        </div>
+      </section>
+      <section data-section="coffeescript" class="section section__three">
+        <h2 class="section__title">CoffeScript</h2></section>
+      <section data-section="packs" class="section section__four">
+        <h2 class="section__title">Packs</h2></section>
+    </div>
+    <footer class="page-footer">
+      <div class="footer-wrapper"></div>
+    </footer>
+    <!-- build:js js/vendor.js -->
+    <!-- endbuild -->
+    <!-- build:js js/main.js -->
+    <script src="js/main.js"></script>
+    <!-- endbuild -->
+  </body>
+
+</html>
