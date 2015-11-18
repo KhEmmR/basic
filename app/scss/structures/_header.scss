@@ -3,33 +3,40 @@
 // -------------------------------------
 
 .nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
+  background: rgba(0,0,0,.5);
+  margin: 0 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 5;
-	width: 100%;
-	margin: 0 0 20px;
-	background: rgba(0,0,0,.5);
 }
-.nav__list {
-	list-style: none;
-	margin: 0;
-	padding: 0 50px 0;
-}
-.nav__item {
-	float: left;
-	margin: 0 20px 0 0;
-}
-.nav__link {
-	display: block;
-	margin: 0;
-	padding: 15px 30px;
-	text-decoration: none;
-	color: #fff;
-	font-size: 1.2em;
 
-  &:hover, .active {
-  	background: #4EC6DE;
+.nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 50px;
+}
+
+.nav__item {
+  float: left;
+  margin: 0 20px 0 0;
+
+  &.active {
+    background: $nav-hover;
+  }
+}
+
+.nav__item_link {
+  color: $link-color;
+  display: block;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 15px 30px;
+  text-decoration: none;
+
+  &:hover {
+    background: $nav-hover;
   }
 }
