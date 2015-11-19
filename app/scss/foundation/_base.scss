@@ -24,16 +24,16 @@ html,body {
   padding: 20px;
 }
 
+.section__one {
+  background: $one-section-bg;
+}
+
 .section__two {
   background: $two-section-bg;
 }
 
 .section__three {
-  background: $third-section-bg;
-}
-
-.section__four {
-  background: $four-section-bg;
+  background: $three-section-bg;
 }
 
 .section-title {

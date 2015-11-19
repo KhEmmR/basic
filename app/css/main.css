@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/*********** flex ************/
 html, body {
   font-size: 1em;
   font-family: 'PT Sans', sans-serif;
@@ -14,13 +15,13 @@ html, body {
   height: 800px;
   padding: 20px; }
 
-.section__two {
+.section__one {
   background: #ff6b40; }
 
-.section__three {
+.section__two {
   background: #4573d5; }
 
-.section__four {
+.section__three {
   background: #ffbe40; }
 
 .section-title {
@@ -71,54 +72,7 @@ html, body {
   .nav__item_link:hover {
     background: #4ec6de; }
 
-/************ Таб вкладки ***********/
-.tabbed {
-  margin: 25px auto;
-  width: 960px; }
-
-.radio-input {
-  display: none; }
-
-.tabs__label {
-  cursor: pointer;
-  display: block;
-  float: left;
-  margin-right: 5px;
-  padding: 12px 20px;
-  -webkit-transition: background-color .3s; }
-
-.tabs__label:hover, .radio-input:checked + .tabs__label {
-  background-color: #4ec6de;
-  color: #fff; }
-
-.tabs {
-  position: absolute;
-  top: 134px;
-  left: 14%;
-  opacity: 0;
-  z-index: 0;
-  -webkit-transform: rotateX(-20deg);
-  transform: rotateX(-20deg);
-  -webkit-transform-origin: top center;
-  -webkit-transition: opacity .3s, transform 1s;
-  width: 960px;
-  border: 2px solid #4ec6de;
-  padding: 10px 30px 40px;
-  line-height: 1.4em; }
-
-.tabs__title {
-  color: #777;
-  font-size: 1.5em;
-  margin-bottom: 50px; }
-
-#tab-nav-0:checked ~ .tabs__container > .tabs__0,
-#tab-nav-1:checked ~ .tabs__container > .tabs__1,
-#tab-nav-2:checked ~ .tabs__container > .tabs__2,
-#tab-nav-3:checked ~ .tabs__container > .tabs__3 {
-  opacity: 1;
-  -webkit-transform: rotateX(0deg);
-  z-index: 1; }
-
+/************ чистый CSS **************/
 /************ Анимации ***********/
 .square {
   -webkit-animation: anim 2s linear 2s 3 reverse;
@@ -152,8 +106,8 @@ html, body {
 
 /*********** Терхмерный куб ***********/
 .cube-wrapper {
-  margin: 80px;
-  -webkit-perspective: 900px; }
+  margin: 60px;
+  -webkit-perspective: 1200px; }
 
 .cube {
   -webkit-transform-origin: 50% 50% -150px;
@@ -193,6 +147,46 @@ html, body {
 
 #side-5 {
   -webkit-transform: rotateY(180deg); }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.block {
+  width: 150px;
+  height: 150px;
+  color: #fff;
+  font-size: 20px; }
+
+.block-1 {
+  background: #5ca835;
+  flex-grow: 5;
+  order: 3; }
+
+.block-2 {
+  background: #db2b60;
+  flex-shrink: 0;
+  order: 6; }
+
+.block-3 {
+  background: #c6ff2b;
+  flex-basis: 500px;
+  order: 4; }
+
+.block-4 {
+  background: #c60ad3;
+  order: 2; }
+
+.block-5 {
+  background: #32bca5;
+  order: 5; }
+
+.block-6 {
+  background: #faff00;
+  flex-grow: 3;
+  order: 1; }
 
 /*********** Эффектные инпуты ***********/
 .field-wrap {
@@ -246,6 +240,57 @@ html, body {
     -webkit-transition: transform .3s;
     transition: transform .3s; }
 
+/************ Таб вкладки ***********/
+.tabbed {
+  margin: 25px auto;
+  width: 960px; }
+
+.radio-input {
+  display: none; }
+
+.tabs__label {
+  cursor: pointer;
+  display: block;
+  float: left;
+  margin-right: 5px;
+  padding: 12px 20px;
+  -webkit-transition: background-color .3s; }
+
+.tabs__label:hover, .radio-input:checked + .tabs__label {
+  background-color: #4ec6de;
+  color: #fff; }
+
+.tabs {
+  background: #fff;
+  min-height: 450px;
+  position: absolute;
+  top: 134px;
+  left: 14%;
+  opacity: 0;
+  z-index: 0;
+  -webkit-transform: rotateX(-20deg);
+  transform: rotateX(-20deg);
+  -webkit-transform-origin: top center;
+  -webkit-transition: opacity .3s, transform 1s;
+  width: 960px;
+  border: 2px solid #4ec6de;
+  padding: 10px 30px 40px;
+  line-height: 1.4em; }
+
+.tabs__title {
+  color: #777;
+  font-size: 1.5em;
+  margin-bottom: 50px; }
+
+#tab-nav-0:checked ~ .tabs__container > .tabs__0,
+#tab-nav-1:checked ~ .tabs__container > .tabs__1,
+#tab-nav-2:checked ~ .tabs__container > .tabs__2,
+#tab-nav-3:checked ~ .tabs__container > .tabs__3 {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
+  z-index: 1; }
+
+/****** стили для jquery блока ******/
 .tags {
   width: 400px;
   height: 300px;

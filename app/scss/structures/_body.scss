@@ -3,5 +3,14 @@
 // -------------------------------------
 
 // подключение стилей для секций
+
+/************ чистый CSS **************/
 @import "../components/_css-block";
+@import "../components/_animation";
+@import "../components/_cube";
+@import "../components/_flex";
+@import "../components/_effect-inputs";
+@import "../components/_tabs";
+
+/****** стили для jquery блока ******/
 @import "../components/_jquery-block";

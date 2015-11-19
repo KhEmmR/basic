@@ -1,0 +1,25 @@
+include ../common/mixins.jade
+
+doctype html
+html(lang="ru-RU")
+  include ../common/head.jade
+  body
+    <!--[if lt IE 7]>
+    <p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">обновите</a> его.</p>
+    <![endif]-->
+    
+    block title
+      title FlexBox
+    .flex-container
+      .block.block-1
+        | 1
+      .block.block-2
+        | 2
+      .block.block-3
+        | 3
+      .block.block-4
+        | 4
+      .block.block-5
+        | 5
+      .block.block-6
+        | 6

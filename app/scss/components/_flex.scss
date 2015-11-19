@@ -1,0 +1,55 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;            // направление элементов (в строку/столбец)
+  flex-wrap: wrap;                // выкладывание элементов в одну или несколько строк
+  justify-content: space-around;  // выравнивание элементов по отношению к контейнеру
+  // align-items: flex-end;
+  // align-content: stretch;
+}
+
+.block {
+  width: 150px;
+  height: 150px;
+  color: $text-color;
+  font-size: 20px;
+}
+
+.block-1 {
+  background: $col-1;
+  flex-grow: 5;        // растягивание элемента относительно оставшихся
+
+  order: 3;            // устанавливает порядок, элемент становится третьим
+}
+
+.block-2 {
+  background: $col-2;
+  flex-shrink: 0;
+
+  order: 6;
+}
+
+.block-3 {
+  background: $col-3;
+  flex-basis: 500px;   // устанавливает фиксированный размер, когда другие меняют свой размер
+
+  order: 4;
+}
+
+.block-4 {
+  background: $col-4;
+
+  order: 2;
+}
+
+.block-5 {
+  background: $col-5;
+
+  order: 5;
+}
+
+.block-6 {
+  background: $col-6;
+  flex-grow: 3;
+
+  order: 1;
+}
