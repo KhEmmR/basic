@@ -1,0 +1,54 @@
+/*********** Терхмерный куб ***********/
+
+.cube-wrapper {
+  margin: 60px;
+
+  -webkit-perspective: 1200px;
+}
+
+.cube {
+  -webkit-transform-origin: 50% 50% -150px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  // -webkit-transform: rotate3d(1,1,1,50deg);
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+.side {
+  background: -webkit-radial-gradient(rgba(80,180,255,.1), rgba(80,180,255,.5));
+  border: 10px solid $text-color;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,.5);
+  -webkit-box-sizing: border-box;
+  color: $text-color;
+  font-size: 4em;
+  height: 300px;
+  line-height: 300px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.4);
+  -webkit-transform-origin: 50% 50% -150px;
+  width: 300px;
+}
+
+#side-1 {
+  -webkit-transform: rotateY(90deg);
+}
+
+#side-2 {
+  -webkit-transform: rotateY(-90deg);
+}
+
+#side-3 {
+  -webkit-transform: rotateX(90deg);
+}
+
+#side-4 {
+  -webkit-transform: rotateX(-90deg);
+}
+
+#side-5 {
+  -webkit-transform: rotateY(180deg);
+}

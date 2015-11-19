@@ -1,0 +1,39 @@
+/************ Анимации ***********/
+
+.square {
+  -webkit-animation: anim 2s linear 2s 3 reverse;
+  background: #ccc;
+  height: 60px;
+  margin: 30px;
+  width: 60px;
+
+  &:hover {
+    -webkit-animation-play-state: paused; /* останавливает анимацию, но в короткую запись данное свойство не входит*/
+  }
+}
+
+@-webkit-keyframes anim {
+  from {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anim {
+  from {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

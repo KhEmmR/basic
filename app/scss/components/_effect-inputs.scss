@@ -1,0 +1,68 @@
+/*********** Эффектные инпуты ***********/
+
+.field-wrap {
+  position: relative;
+  width: 200px;
+  height: 40px;
+}
+
+.field {
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  color: $input-color;
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+  // opacity: 0;
+  padding: 5px 15px;
+  width: 200px;
+
+  &:focus {
+    outline: none;
+
+    + .field-label .label-text {
+      -webkit-transform: translate3d(0, -145%, 0);
+      transform: translate3d(0, -145%, 0);
+    }
+  }
+}
+
+.field-label {
+  box-sizing: border-box;
+  cursor: text;
+  font-size: 18px;
+  height: 100%;
+  padding: 10px 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: $input-color;
+  }
+
+  &:before {
+    top: 0;
+  }
+
+  &:after {
+    bottom: 0;
+  }
+
+  .label-text {
+    color: $input-color;
+    display: block;
+    font-size: 16px;
+    position: absolute;
+    -webkit-transition: transform .3s;
+    transition: transform .3s;
+  }
+}

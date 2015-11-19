@@ -1,0 +1,59 @@
+/************ Таб вкладки ***********/
+
+.tabbed {
+  margin: 25px auto;
+  width: 960px;
+}
+
+.radio-input {
+  display: none;
+}
+
+.tabs__label {
+  cursor: pointer;
+  display: block;
+  float: left;
+  margin-right: 5px;
+  padding: 12px 20px;
+  -webkit-transition: background-color .3s;
+}
+
+.tabs__label:hover, .radio-input:checked + .tabs__label {
+  background-color: $nav-hover;
+  color: $text-color;
+}
+
+.tabs {
+  background: $text-color;
+  min-height: 450px;
+  position: absolute;
+  top: 134px;
+  left: 14%;
+  opacity: 0;
+  z-index: 0;
+
+  -webkit-transform: rotateX(-20deg);
+  transform: rotateX(-20deg);
+  -webkit-transform-origin: top center;
+  -webkit-transition: opacity .3s, transform 1s;
+
+  width: 960px;
+  border: 2px solid $nav-hover;
+  padding: 10px 30px 40px;
+  line-height: 1.4em;
+}
+
+.tabs__title {
+  color: $title-color;
+  font-size: 1.5em;
+  margin-bottom: 50px;
+}
+
+#tab-nav-0:checked ~ .tabs__container > .tabs__0,
+#tab-nav-1:checked ~ .tabs__container > .tabs__1,
+#tab-nav-2:checked ~ .tabs__container > .tabs__2,
+#tab-nav-3:checked ~ .tabs__container > .tabs__3 {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
+  z-index: 1;
+}
