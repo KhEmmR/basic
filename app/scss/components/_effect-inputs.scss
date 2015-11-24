@@ -14,7 +14,6 @@
   font-size: 20px;
   height: 40px;
   line-height: 40px;
-  // opacity: 0;
   padding: 5px 15px;
   width: 200px;
 
@@ -22,7 +21,6 @@
     outline: none;
 
     + .field-label .label-text {
-      -webkit-transform: translate3d(0, -145%, 0);
       transform: translate3d(0, -145%, 0);
     }
   }

@@ -1,0 +1,87 @@
+/*********** Эффектный селект ***********/
+
+.custom-select {
+  float: right;
+  height: 320px;
+  position: relative;
+  width: 350px;
+}
+
+.main-select, .custom-select__item {
+  border: 1px solid $two-section-bg;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  width: 70px;
+  z-index: 10;
+}
+
+.main-select {
+  left: 40%;
+  position: absolute;
+  top: 39%;
+}
+
+.custom-select__list {
+  height: 70px;
+  left: 40%;
+  list-style: none;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 39%;
+  width: 70px;
+  z-index: 5;
+}
+
+.custom-select__item {
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  transition: all .4s;
+}
+
+.fa {
+  color: $two-section-bg;
+  font-size: 50px;
+  vertical-align: middle;
+}
+
+.active-select {
+  opacity: 1;
+  transition: all .4s;
+
+  .custom-select__item-1 {
+    transform: translate3d(0, -120px, 0);
+  }
+
+  .custom-select__item-2 {
+    transform: translate3d(-135px, 0, 0);
+  }
+
+  .custom-select__item-3 {
+    transform: translate3d(135px, 0, 0);
+  }
+
+  .custom-select__item-4 {
+    transform: translate3d(-100px, -100px, 0);
+  }
+
+  .custom-select__item-5 {
+    transform: translate3d(100px, 100px, 0);
+  }
+
+  .custom-select__item-6 {
+    transform: translate3d(100px, -100px, 0);
+  }
+
+  .custom-select__item-7 {
+    transform: translate3d(-100px, 100px, 0);
+  }
+
+  .custom-select__item-8 {
+    transform: translate3d(0, 120px, 0);
+  }
+}
