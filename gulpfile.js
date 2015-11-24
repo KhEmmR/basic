@@ -1,160 +1,152 @@
-"use strict" //показывать место ошибки в терминале
+"use strict"; //показывать место ошибки в терминале
 
-var gulp = require('gulp'),							//создание переменных для вызова 
+//создание переменных для вызова
+
+var gulp = require('gulp'),
 	wiredep = require('wiredep').stream,
-	useref = require('gulp-useref'),				//склеивает и рассовывает все по папкам, в html надо поставить специальные комментарии для css и js
-	uglify = require('gulp-uglify'),
-	clean = require('gulp-clean'),
-	gulpif = require('gulp-if'),
-	filter = require('gulp-filter'),
-	size = require('gulp-size'),
-	//imagemin = require('gulp-imagemin'),
-	minifyCss = require('gulp-minify-css'), 		//минификация файла css
+	useref = require('gulp-useref'),		//склеивает css-, js-файлы и помещает всё в dist, в html надо поставить специальные комментарии для css и js
+	uglify = require('gulp-uglify'),		//минифицирует js
+	clean = require('gulp-clean'),          //для очистки папки dist перед пересборкой
+	gulpif = require('gulp-if'),			//для установки условий
+	filter = require('gulp-filter'),		//для фильтрования шрифтов
+	size = require('gulp-size'),            //показывает размер сборки
+	// imagemin = require('gulp-imagemin'),    //минификация изображений
+	autoprefixer = require('gulp-autoprefixer'),	//добавляет префиксы
+	minifyCss = require('gulp-minify-css'), //минификация файла css
 	jade = require('gulp-jade'),
 	sass = require('gulp-sass'),
 	prettify = require('gulp-prettify'),
-	browserSync = require('browser-sync'),
+	browserSync = require('browser-sync'),  //для обновления страницы при разработке
 	reload = browserSync.reload;
 
-///////////
-//сборка //
-///////////
+			///////////
+			//сборка //
+			///////////
 
 //очистка папки
-	gulp.task('clean', function () {
-		return gulp.src('dist')
-			.pipe(clean());
-	});
+gulp.task('clean', function () {
+	return gulp.src('dist')
+		.pipe(clean());
+});
 
 //переносим html, css, js в папку dist
-	gulp.task('useref', function () {
-		var assets = useref.assets();
-		return gulp.src('app/*.html')
-			.pipe(assets)
-			.pipe(gulpif('*.js', uglify()))
-			.pipe(gulpif('*.css', minifyCss({compability: 'ie8'})))
-			.pipe(assets.restore())
-			.pipe(useref())
-			.pipe(gulp.dest('dist')); //прописываем новые пути
-	});
+gulp.task('useref', function () {
+	var assets = useref.assets();
+    return gulp.src('app/*.html')
+		.pipe(assets)
+		.pipe(gulpif('*.js', uglify()))
+		.pipe(gulpif('*.css', minifyCss({compability: 'ie8'})))
+		.pipe(gulpif('*.css', autoprefixer({browsers: ['last 15 versions'],cascade: false})))
+		.pipe(assets.restore())
+		.pipe(useref())
+		.pipe(gulp.dest('dist')); //прописываем новые пути
+});
 
 //перенос шрифтов
-	gulp.task('fonts', function(){
-		gulp.src('app/fonts/*')
-			.pipe(filter(['*.eot', '*.svg', '*.ttf', '*.woff', '*.woff2']))
-			.pipe(gulp.dest('dist/fonts/'));
-	});
+gulp.task('fonts', function(){
+	gulp.src('app/fonts/*')
+		.pipe(filter(['*.eot', '*.svg', '*.ttf', '*.woff', '*.woff2']))
+		.pipe(gulp.dest('dist/fonts/'));
+});
 
 //картинки
-//	gulp.task('images', function () {
-//		return gulp.src('app/img/**/*')
-//			.pipe(imagemin({
-//				progressive: true,
-//				interlaced:true
-//			}))
-//			.pipe(gulp.dest('dist/img'));
-//	});
+// gulp.task('images', function () {
+// 	return gulp.src('app/img/**/*')
+// 		.pipe(imagemin({
+// 			progressive: true,
+// 			interlaced:true
+// 		}))
+// 		.pipe(gulp.dest('dist/img'));
+// });
 
 
 //остальные файлы, такие как favicon  и пр.
-	gulp.task('extras', function () {
-		return gulp.src([
-			'app/*.*',
-			'!app/*.html'
-		]).pipe(gulp.dest('dist'));
-	});
+gulp.task('extras', function () {
+	return gulp.src([
+		'app/*.*',
+		'!app/*.html'
+	]).pipe(gulp.dest('dist'));
+});
 
 //сборка и вывод размера содержимого папки dist
-	gulp.task('dist', ['useref', /*'images', */'fonts', 'extras'], function(){
-		return gulp.src('dist/**/*').pipe(size({title:'build'}));
+gulp.task('dist', ['useref', 'images', 'fonts', 'extras'], function(){
+	return gulp.src('dist/**/*').pipe(size({title:'build'}));
+});
+
+
+			/////////////////
+			// Работа с APP//
+			/////////////////
+
+// Компилируем Jade в html
+gulp.task('jade', function() {
+	gulp.src('app/templates/pages/*.jade')
+		.pipe(jade())
+		.on('error', log)
+		.pipe(prettify({indent_size: 2}))
+		.pipe(gulp.dest('app/'))
+		.pipe(reload({stream: true}));
+});
+
+// Компилируем sass в css
+gulp.task('sass', function(){
+	gulp.src('app/css/sass/*.scss')
+		.pipe(sass())
+		.on('error', log)
+		.pipe(gulp.dest('app/css'))
+		.pipe(reload({stream: true}));
+});
+
+// Собираем папку DIST (только после компиляции Jade)
+gulp.task('build', ['clean', 'jade'], function () {
+	gulp.start('dist');
+});
+
+// Подключаем ссылки на bower components
+gulp.task('wiredep', function () {
+	gulp.src('app/*.html')
+		.pipe(wiredep())
+		.pipe(gulp.dest('app/'))
+});
+
+// Запускаем локальный сервер (только после компиляции jade)
+gulp.task('server', ['jade', 'sass'], function () {
+	browserSync({
+		notify: false,
+		port: 9000,
+		server: {
+			baseDir: 'app'
+		}
 	});
+});
 
+// слежка и запуск задач
+gulp.task('watch', function () {
+//	  gulp.watch('app/templates/**/*.jade', ['jade']);
+	gulp.watch('bower.json', ['wiredep']);
+	gulp.watch([
+		'app/*.html',
+		'app/js/**/*.js',
+		'app/css/**/*.css'
+	]).on('change', reload);
+});
 
-/////////////////
-//Работа с APP //
-/////////////////
-
-	// Собираем папку DIST (только после компиляции Jade)
-	gulp.task('build', ['clean', 'jade'], function () {
-		gulp.start('dist');
-	});
-
-	// Компилируем Jade в html
-	gulp.task('jade', function() {
-		gulp.src('app/templates/pages/*.jade')
-			.pipe(jade())
-			.on('error', log)
-			.pipe(prettify({indent_size: 2}))
-			.pipe(gulp.dest('app/'))
-			.pipe(reload({stream: true}));
-	});
-
-	//Компилируем Sass в CSS
-	gulp.task('sass', function () {
-			gulp.src('app/scss/*.scss')
-				.pipe(sass())
-				.on('error',log)
-				.pipe(gulp.dest('app/css'))
-				.pipe(reload({stream: true}));
-	});
-
-	// Подключаем ссылки на bower components
-	gulp.task('wiredep', function () {
-		gulp.src('app/templates/common/*.jade')
-			.pipe(wiredep({
-				ignorePath: /^(\.\.\/)*\.\./
-			}))
-			.pipe(gulp.dest('app/templates/common/'))
-	});
-
-	// Запускаем локальный сервер (только после компиляции jade)
-	gulp.task('server', ['jade', 'sass'], function () {  
-		browserSync({
-			notify: false,
-			port: 9000,
-			server: {
-				baseDir: 'app'
-			}
-		});  
-	});
-
-	// слежка и запуск задач 
-	gulp.task('watch', function () {
-		gulp.watch('app/templates/**/*.jade', ['jade']);
-		gulp.watch('app/scss/**/*.scss', ['sass']);
-		gulp.watch('bower.json', ['wiredep']);
-		gulp.watch([
-			'app/js/**/*.js'
-			//'app/css/**/*.css'
-		]).on('change', reload);
-	});
-
-	// Задача по-умолчанию 
-	gulp.task('default', ['server', 'watch']);
-
-	// ====================================================
-	// ====================================================
-	// ===================== Функции ======================
-
-	// Более наглядный вывод ошибок
-	var log = function (error) {
-		console.log([
-			'',
-			"----------ERROR MESSAGE START----------",
-			("[" + error.name + " in " + error.plugin + "]"),
-			error.message,
-			"----------ERROR MESSAGE END----------",
-			''
-		].join('\n'));
-		this.end();
-	}
-
+// Задача по-умолчанию
+gulp.task('default', ['server', 'watch', 'wiredep']);
 
 // ====================================================
 // ====================================================
-// =============== Важные моменты  ====================
-// gulp.task(name, deps, fn) 
-// deps - массив задач, которые будут выполнены ДО запуска задачи name
-// внимательно следите за порядком выполнения задач!
+// ===================== Функции ======================
 
-
+// Более наглядный вывод ошибок
+var log = function (error) {
+	console.log([
+		'',
+		"----------ERROR MESSAGE START----------",
+		("[" + error.name + " in " + error.plugin + "]"),
+		error.message,
+		"----------ERROR MESSAGE END----------",
+		''
+	].join('\n'));
+	this.end();
+};
