@@ -1,0 +1,67 @@
+/*********** Эффектная панель навигации ***********/
+
+.other-nav {
+  &__list {
+    float: left;
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    width: 325px;
+    position: relative;
+  }
+
+  &__link {
+    background: $col-1;
+    color: $text-color;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 8px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+  }
+
+  &__effect{
+    background: $col-3;
+    height: 2px;
+    left: -76px;
+    // margin-left: -60px;
+    position: absolute;
+    bottom: 0;
+    transition: all .7s;
+    width: 76px;
+  }
+}
+
+.over-nav__link-1 {
+  &:hover {
+    .other-nav__effect {
+      left: 0px;
+    }
+  }
+}
+
+.over-nav__link-2 {
+  &:hover {
+    .other-nav__effect {
+      left: 78px;
+    }
+  }
+}
+
+.over-nav__link-3 {
+  &:hover {
+    .other-nav__effect {
+      left: 156px;
+    }
+  }
+}
+
+.over-nav__link-4 {
+  &:hover {
+    .other-nav__effect {
+      left: 234px;
+    }
+  }
+}

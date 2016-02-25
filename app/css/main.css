@@ -150,7 +150,7 @@ html, body {
 
 /*********** Эффектный селект ***********/
 .custom-select {
-  float: right;
+  float: left;
   height: 320px;
   position: relative;
   width: 350px; }
@@ -303,9 +303,51 @@ html, body {
   flex-grow: 3;
   order: 1; }
 
+/*********** Эффектная панель навигации ***********/
+.other-nav__list {
+  float: left;
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+  width: 325px;
+  position: relative; }
+
+.other-nav__link {
+  background: #5ca835;
+  color: #fff;
+  display: inline-block;
+  margin-right: 5px;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 60px; }
+
+.other-nav__effect {
+  background: #c6ff2b;
+  height: 2px;
+  left: -76px;
+  position: absolute;
+  bottom: 0;
+  transition: all .7s;
+  width: 76px; }
+
+.over-nav__link-1:hover .other-nav__effect {
+  left: 0px; }
+
+.over-nav__link-2:hover .other-nav__effect {
+  left: 78px; }
+
+.over-nav__link-3:hover .other-nav__effect {
+  left: 156px; }
+
+.over-nav__link-4:hover .other-nav__effect {
+  left: 234px; }
+
 /*********** Эффектные превью ***********/
 .preview {
   border: 1px solid #6a7989;
+  float: left;
   height: 200px;
   margin: 50px 10px 10px;
   overflow: hidden;
